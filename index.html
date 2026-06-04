@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Satisfy&family=Caveat:wght@500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Tante❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    perspective:4000px;
+    font-family:'Comic Sans MS',sans-serif;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+
+    background:linear-gradient(
+        135deg,
+        #ffe0ec,
+        #fff5d6
+    );
+}
+
+.slide{
+    background:
+    url("paper.png"),
+    #fffdf8;
+
+    display:flex;
+    visibility:hidden;
+    pointer-events:none;
+
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    gap:20px;
+
+    position:absolute;
+    top:50%;
+    left:50%;
+
+    width:85%;
+    height:85%;
+
+   transform-origin:left center;
+    transform:
+        translate(-50%,-50%)
+        rotateX(-90deg);
+
+    opacity:0;
+    backface-visibility:hidden;
+}
+
+.slide.active{
+    visibility:visible;
+    pointer-events:auto;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    animation:bookOpen 1s ease forwards;
+
+    box-shadow:
+        -60px 0 80px rgba(0,0,0,.3),
+        0 20px 40px rgba(0,0,0,.15);
+}
+
+@keyframes bookOpen{
+    from{
+        opacity:0;
+        transform:
+            translate(-50%,-50%)
+            rotateY(-120deg);
+    }
+    to{
+        opacity:1;
+        transform:
+            translate(-50%,-50%)
+            rotateY(0deg);
+    }
+}
+
+@keyframes bookClose{
+    from{
+        opacity:1;
+        transform:
+            translate(-50%,-50%)
+            rotateY(0deg);
+    }
+    to{
+        opacity:0;
+        transform:
+            translate(-50%,-50%)
+            rotateY(120deg);
+    }
+}
+
+.slide::before{
+    content:"";
+
+    position:absolute;
+
+    width:160px;
+    height:35px;
+
+    background:
+    rgba(255,255,255,.65);
+
+    top:-15px;
+    left:50%;
+
+    transform:
+    translateX(-50%)
+    rotate(-4deg);
+}
+
+.slide::after{
+   content:"";
+
+    position:absolute;
+    left:0;
+    top:0;
+
+    width:30px;
+    height:100%;
+
+    background:
+    linear-gradient(
+        to right,
+        rgba(0,0,0,.25),
+        rgba(0,0,0,.05),
+        transparent
+    );
+
+    pointer-events:none;
+}
+
+.sticker{
+    position:absolute;
+    font-size:50px;
+}
+
+.sticker1{
+    top:20px;
+    right:30px;
+    transform:rotate(15deg);
+}
+
+.sticker2{
+    bottom:20px;
+    left:30px;
+    transform:rotate(-15deg);
+}
+
+h1{
+
+    font-family: 'Chewy', cursive;
+    font-size:3rem;
+    color:#ff4081;
+    margin-bottom:20px;
+}
+
+h2{
+    font-family: 'Caveat', cursive;
+    color:#ff4081;
+    margin-bottom:20px;
+}
+
+p{
+    font-family:'Satisfy', cursive;
+    max-width:700px;
+    line-height:1.8;
+    font-size:1.1rem;
+}
+
+button{
+    margin-top:20px;
+    padding:15px 30px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:1rem;
+    background:white;
+}
+
+button:hover{
+    background:#fba1bf;
+    color:rgb(195, 76, 130);
+}
+
+#Photograph{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    background:rgba(255,255,255,.8);
+    padding:10px 15px;
+    border-radius:20px;
+    color:#ff4081;
+    font-weight:bold;
+    z-index:9999;
+}
+
+.gallery{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.gallery img{
+    width:180px;
+    height:230px;
+
+    object-fit:cover;
+
+    background:white;
+
+    padding:10px 10px 40px;
+
+    border-radius:5px;
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.25);
+
+    transition:.4s;
+}
+
+.gallery img:hover{
+    transform:
+    scale(1.1)
+    rotate(0deg) !important;
+}
+
+.gallery img:nth-child(1){
+    transform:rotate(-8deg);
+}
+
+.gallery img:nth-child(2){
+    transform:rotate(7deg);
+}
+
+.gallery img:nth-child(3){
+    transform:rotate(-4deg);
+}
+
+.gallery img:nth-child(4){
+    transform:rotate(9deg);
+}
+
+.gallery img:hover{
+    transform:scale(1.08);
+}
+
+.heart{
+    position:fixed;
+    top:-50px;
+    animation:fall linear forwards;
+    z-index:999;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh);
+    }
+}
+
+.balloon{
+    position:fixed;
+    bottom:-100px;
+    font-size:40px;
+    animation:rise linear forwards;
+}
+
+@keyframes rise{
+    to{
+        transform:translateY(-120vh);
+    }
+}
+
+#surprise{
+    display:none;
+    font-size:2rem;
+    color:#ff4081;
+    margin-top:30px;
+}
+
+.fade{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+#countdown{
+    font-size:2rem;
+    color:#ff4081;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+#typed{
+    font-size:2rem;
+    color:#ff4081;
+    font-weight:bold;
+    min-height:60px;
+}
+
+#envelope{
+    font-size:100px;
+    animation:shake 1.5s infinite;
+    cursor:pointer;
+}
+
+@keyframes shake{
+    0%,100%{transform:rotate(0deg);}
+    25%{transform:rotate(-10deg);}
+    75%{transform:rotate(10deg);}
+}
+
+
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+    <source src="Photograph.mp3" type="audio/mpeg">
+</audio>
+
+<div id="Photograph">
+    🎵 Now Playing: Ed Sheeran - Photograph
+</div>
+
+<audio id="flip">
+    <source src="flip.mp3" type="audio/mpeg">
+</audio>
+
+<section class="slide active">
+    <div id="envelope" onclick="nextSlide()">💌</div>
+
+    <h1>Dear, Sheira Naurin Widiyatmadja</h1>
+
+    <p>Klik amplop untuk membuka hadiah ulang tahunmu.</p>
+
+    <button onclick="openGift()">
+        🧧
+    </button>
+</section>
+
+<section class="slide">
+    <h1>⏳ Countdown</h1>
+    <div id="countdown"></div>
+    <button onclick="nextSlide()"> 
+        (👉ﾟヮﾟ)👉
+    </button>
+</section>
+
+<section class="slide">
+    <div class="sticker sticker1">💖</div>
+    <div class="sticker sticker2">✨</div>
+    
+    <h1>🎂 Happy Birthday Kesayanganku 🎂</h1>
+    <div id="typed"></div>
+
+    <button onclick="nextSlide()">
+         (❁´◡`❁)
+    </button>
+</section>
+
+<section class="slide">
+    <h1>🎂 HAPPY BIRTHDAY 🎂</h1>
+
+    <h2>❤️SHEIRA NAURIN WIDIYATMADJA❤️</h2>
+
+    <p>
+        Hari ini adalah hari spesialmu.
+        Semoga suka dengan hadiah dari Adik
+    </p>
+    
+    <button onclick="nextSlide()">
+         (´▽`ʃ♡ƪ)
+    </button>
+</section>    
+
+<section class="slide">
+    <div class="sticker sticker1">💖</div>
+    <div class="sticker sticker2">✨</div>
+    
+    <h2>💌 My Sweetheart 💌</h2>
+
+    <p>
+        Selamat ulang tahun, Tante Shei.<br><br>
+
+        Semoga di usia yang baru ini,
+        kamu selalu diberikan kesehatan,
+        kebahagiaan, dan kesuksesan dalam setiap langkahmu.<br><br>
+
+        Terima kasih karena sudah bertahan sampai sekarang
+    </p>
+        <button onclick="nextSlide()">
+         ❤️
+    </button>
+</section>
+
+<section class="slide fade">
+    <h2>📸 Gallery Princess 📸</h2>
+
+    <div class="gallery">
+
+        <img src="image/foto1.jpeg">
+        <img src="image/foto2.jpeg">
+        <img src="image/foto3.jpeg">
+        <img src="image/foto4.jpeg">
+
+    </div>
+        <button onclick="nextSlide()">
+         ❤️
+    </button>
+</section>
+
+<section class="slide fade">
+    <h2>📝 Love Letter 📝</h2>
+
+    <p>
+        Dear Sheira,<br><br>
+
+        Semoga tidurmu selalu nyenyak,
+        semoga nasimu selalu panas,
+        dan semoga hari-harimu selalu
+        dikelilingi keberuntungan serta
+        orang-orang baik yang tulus menyayangimu.<br><br>
+
+        Aku beruntung 
+        karena sudah mempertemukanku
+        dengan orang sebaik kamu.
+        Semoga kita selalu bersama 
+        semoga selalu sabar dalam banyak hal, 
+        termasuk sikapku  yang kadang suka kurang ajar 😆.<br><br>
+
+        Semoga tahun ini membawa lebih banyak
+        kebahagiaan, tawa, dan cerita indah
+        untukmu.<br><br>
+
+        Dari,<br>
+        <b>Adik Kesayanganmu 😍</b>
+    </p>
+
+        <button onclick="nextSlide()">
+         ☆☆☆
+    </button>
+</section>
+
+<section class="slide">
+
+    <button onclick="showSurprise()">
+        🎁🎁🎁
+    </button>
+
+    <div id="surprise">
+        ❤️ I'M SO PROUD OF YOU ❤️
+        <br>
+        🎂Happy Birthday My Princess 🎂
+    </div>
+
+    <button onclick="nextSlide()">
+         🎀🎀🎀
+    </button>
+</section>
+
+<section class="slide">
+
+    <h1>❤️ I LOVE YOU ❤️</h1>
+
+    <p>
+        Terima kasih sudah hadir dan menjadi
+        bagian dari banyak cerita indah.
+
+        <br><br>
+
+        Semoga semua doa dan harapanmu
+        satu per satu terwujud.
+
+        <br><br>
+
+        Aku sayang kamu ❤️
+    </p>
+
+    <button onclick="rainHearts()">
+        💖 I Love You 💖
+    </button>
+
+</section>
+
+<script>
+
+function openGift(){
+
+    const music = document.getElementById("music");
+
+    music.volume = 0.4;
+
+    music.play().catch(()=>{});
+
+    nextSlide();
+}
+
+
+function startGift(){
+
+    document.getElementById("music").play();
+}
+
+
+function showSurprise(){
+
+    document.getElementById("surprise").style.display="block";
+
+    for(let i=0;i<30;i++){
+
+        let heart=document.createElement("div");
+
+        heart.className="heart";
+        heart.innerHTML="❤️";
+
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.fontSize=(20+Math.random()*30)+"px";
+        heart.style.animationDuration=(3+Math.random()*4)+"s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },7000);
+    }
+}
+
+setInterval(()=>{
+
+    let balloon=document.createElement("div");
+
+    balloon.className="balloon";
+    balloon.innerHTML="🎈";
+
+    balloon.style.left=Math.random()*100+"vw";
+    balloon.style.animationDuration=(8+Math.random()*5)+"s";
+
+    document.body.appendChild(balloon);
+
+    setTimeout(()=>{
+        balloon.remove();
+    },13000);
+
+},1000);
+
+let currentSlide = 0;
+
+const slides =
+document.querySelectorAll(".slide");
+
+function nextSlide(){
+
+    document.getElementById("flip").play();
+
+    slides[currentSlide].style.zIndex = 100;
+
+    slides[currentSlide].style.animation =
+        "bookClose .8s ease forwards";
+
+    const oldSlide = currentSlide;
+
+    currentSlide++;
+
+    if(currentSlide >= slides.length){
+        currentSlide = slides.length - 1;
+        return;
+    }
+
+    slides[currentSlide].classList.add("active");
+    slides[currentSlide].style.zIndex = 1;
+
+    setTimeout(()=>{
+        slides[oldSlide].classList.remove("active");
+    },800);
+}
+
+const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+});
+
+const birthday = new Date("July 6, 2026 00:00:00").getTime();
+
+setInterval(()=>{
+
+    const now = new Date().getTime();
+
+    const distance = birthday - now;
+
+    const days = Math.floor(
+        distance / (1000*60*60*24)
+    );
+
+    const hours = Math.floor(
+        (distance % (1000*60*60*24))
+        /(1000*60*60)
+    );
+
+    const minutes = Math.floor(
+        (distance % (1000*60*60))
+        /(1000*60)
+    );
+
+    const seconds = Math.floor(
+        (distance % (1000*60))
+        /1000
+    );
+
+    document.getElementById("countdown").innerHTML =
+        `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
+
+},1000);
+
+const text =
+"Selamat Ulang Tahun Tante Sheira ❤️";
+
+let i = 0;
+
+function typing(){
+
+    if(i < text.length){
+
+        document.getElementById("typed").innerHTML += text.charAt(i);
+
+        i++;
+
+        setTimeout(typing,70);
+    }
+}
+
+typing();
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="ArrowRight"){
+        nextSlide();
+    }
+
+    if(e.key==="ArrowLeft"){
+        previousSlide();
+    }
+
+});
+
+function previousSlide(){
+
+    if(currentSlide > 0){
+
+        slides[currentSlide]
+            .classList.remove("active");
+
+        currentSlide--;
+
+        slides[currentSlide]
+            .classList.add("active");
+    }
+}
+
+function rainHearts(){
+
+    for(let i=0;i<80;i++){
+
+        setTimeout(()=>{
+
+            let heart=document.createElement("div");
+
+            heart.className="heart";
+            heart.innerHTML="💖";
+
+            heart.style.left=Math.random()*100+"vw";
+            heart.style.fontSize=(20+Math.random()*40)+"px";
+            heart.style.animationDuration=(3+Math.random()*5)+"s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(()=>{
+                heart.remove();
+            },8000);
+
+        },i*100);
+
+    }
+}
+
+</script>
+
+</body>
+</html>
